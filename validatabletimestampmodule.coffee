@@ -9,11 +9,11 @@ validatabletimestampmodule.setTimeFrameMS = (ms) -> tfMS = ms
 ############################################################
 validatabletimestampmodule.assertValidity = (timestamp) ->
     now = Date.now()
-    now_rounded = now - (now % tMS)
+    now_rounded = now - (now % tfMS)
 
-    if timestamp != now_rounded then now_rounded -= tMS
+    if timestamp != now_rounded then now_rounded -= tfMS
     else return
-    if timestamp != now_rounded then now_rounded += 2 * tMS
+    if timestamp != now_rounded then now_rounded += 2 * tfMS
     else return
     if timestamp != now_rounded then throw new Error("Invalid Timestamp!")
     else return
@@ -22,7 +22,7 @@ validatabletimestampmodule.assertValidity = (timestamp) ->
 ############################################################
 validatabletimestampmodule.create = ->
     now = Date.now()
-    now_rounded = now - (now % tMS)
+    now_rounded = now - (now % tfMS)
     return now_rounded
 
 export default validatabletimestampmodule
