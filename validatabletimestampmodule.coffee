@@ -1,8 +1,12 @@
-validatabletimestampmodule = {name: "validatabletimestampmodule"}
-
 ############################################################
 tfMS = 10000
 
+############################################################
+validatabletimestampmodule.initialize = ->
+    c = allModules.configmodule
+    if c.validationTimeFrameMS then tfMS = c.validationTimeFrameMS
+    return
+     
 ############################################################
 validatabletimestampmodule.setTimeFrameMS = (ms) -> tfMS = ms
 
