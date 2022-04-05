@@ -1,18 +1,17 @@
-validatabletimestampmodule = {}
 ############################################################
 tfMS = 10000
 
 ############################################################
-validatabletimestampmodule.initialize = ->
+export initialize = ->
     c = allModules.configmodule
     if c.validationTimeFrameMS then tfMS = c.validationTimeFrameMS
     return
 
 ############################################################
-validatabletimestampmodule.setTimeFrameMS = (ms) -> tfMS = ms
+export setTimeFrameMS = (ms) -> tfMS = ms
 
 ############################################################
-validatabletimestampmodule.assertValidity = (timestamp) ->
+export assertValidity = (timestamp) ->
     now = Date.now()
     now_rounded = now - (now % tfMS)
 
@@ -25,10 +24,7 @@ validatabletimestampmodule.assertValidity = (timestamp) ->
     return
 
 ############################################################
-validatabletimestampmodule.create = ->
+export create = ->
     now = Date.now()
     now_rounded = now - (now % tfMS)
     return now_rounded
-
-export default validatabletimestampmodule
-
